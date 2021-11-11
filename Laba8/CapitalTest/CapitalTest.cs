@@ -59,6 +59,10 @@ namespace CapitalTest
 
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
+            _webDriverWait.Until(
+                ExpectedConditions.ElementToBeClickable(
+                    By.XPath("//div[@class='col favorites']//add-instrument-to-watchlist-button")));
+            
             var addToFavoriteButton = _webDriver.FindElements(By.XPath("//div[@class='col favorites']//add-instrument-to-watchlist-button"))[0];
             addToFavoriteButton.Click();
 
@@ -76,7 +80,6 @@ namespace CapitalTest
 
             Assert.AreEqual(ExpectedFavoritedMarketName, actualFavoritedMarketName);
         }
-        
         [TearDown]
         public void TearDown()
         {
