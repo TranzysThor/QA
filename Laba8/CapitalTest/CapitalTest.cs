@@ -48,6 +48,8 @@ namespace CapitalTest
         {
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(5));
             
+            _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(_webDriver.FindElements(By.TagName("i"))[2]));
+            
             var mostTradedMarketsButton = _webDriver.FindElements(By.TagName("i"))[2];
             mostTradedMarketsButton.Click();
             mostTradedMarketsButton.Click();
