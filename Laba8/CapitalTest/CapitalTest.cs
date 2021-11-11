@@ -77,7 +77,6 @@ namespace CapitalTest
 
             Assert.AreEqual(ExpectedFavoritedMarketName, actualFavoritedMarketName);
         }
-        
         [TearDown]
         public void TearDown()
         {
