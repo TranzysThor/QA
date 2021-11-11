@@ -24,7 +24,7 @@ namespace CapitalTest
             _webDriver.Manage().Window.Maximize();
             _webDriver.Navigate().GoToUrl("https://capital.com/");
 
-            _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(15));
+            _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(35));
             
             var tryDemoButton = _webDriver.FindElement(By.CssSelector(".outlined-light"));
             tryDemoButton.Click();
@@ -49,15 +49,15 @@ namespace CapitalTest
         [Test]
         public void AddMarketToFavoriteTest()
         {
-            _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(15));
+            _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(25));
 
             var mostTradedMarketsButton = _webDriver.FindElements(By.TagName("i"))[2];
             mostTradedMarketsButton.Click();
             mostTradedMarketsButton.Click();
 
-            _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(".add-instrument-to-watchlist-button")));
+            _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(By.TagName("add-instrument-to-watchlist-button")));
             
-            var addToFavoriteButton = _webDriver.FindElements(By.CssSelector(".add-instrument-to-watchlist-button"))[0];
+            var addToFavoriteButton = _webDriver.FindElements(By.TagName("add-instrument-to-watchlist-button"))[0];
             addToFavoriteButton.Click();
 
             _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(
