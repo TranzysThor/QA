@@ -58,6 +58,8 @@ namespace CapitalTest
             mostTradedMarketsButton.Click();
 
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(
+                By.XPath("//div[@class='col favorites']//add-instrument-to-watchlist-button//i")));
 
             var addToFavoriteButton = _webDriver.FindElements(By.XPath("//div[@class='col favorites']//add-instrument-to-watchlist-button//i"))[0];
             addToFavoriteButton.Click();
