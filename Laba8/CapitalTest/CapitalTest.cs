@@ -49,21 +49,20 @@ namespace CapitalTest
         [Test]
         public void AddMarketToFavoriteTest()
         {
-            _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(25));
+            _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(5));
 
-            _webDriverWait.Until(ExpectedConditions.ElementExists(By.XPath("//span[@class='side-nav__item-text']")));
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             
             var mostTradedMarketsButton = _webDriver.FindElements(By.TagName("i"))[2];
             mostTradedMarketsButton.Click();
             mostTradedMarketsButton.Click();
 
-            _webDriverWait.Until(ExpectedConditions.ElementExists(By.TagName("add-instrument-to-watchlist-button")));
-            
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
             var addToFavoriteButton = _webDriver.FindElements(By.TagName("add-instrument-to-watchlist-button"))[0];
             addToFavoriteButton.Click();
 
-            _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(
-                "//div[@class='popover-add-watchlist__footer']//button[@class='button-main button-main--medium']")));
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             
             var addToFavoritesConfirmationButton =
                 _webDriver.FindElement(By.XPath("//div[@class='popover-add-watchlist__footer']//button[@class='button-main button-main--medium']"));
@@ -77,6 +76,7 @@ namespace CapitalTest
 
             Assert.AreEqual(ExpectedFavoritedMarketName, actualFavoritedMarketName);
         }
+        
         [TearDown]
         public void TearDown()
         {
