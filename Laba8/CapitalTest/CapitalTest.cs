@@ -24,7 +24,7 @@ namespace CapitalTest
             _webDriver.Manage().Window.Maximize();
             _webDriver.Navigate().GoToUrl("https://capital.com/");
 
-            _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(5));
+            _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(15));
             
             var tryDemoButton = _webDriver.FindElement(By.CssSelector(".outlined-light"));
             tryDemoButton.Click();
