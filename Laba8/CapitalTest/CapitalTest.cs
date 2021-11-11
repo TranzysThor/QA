@@ -46,7 +46,7 @@ namespace CapitalTest
         [Test]
         public void AddMarketToFavoriteTest()
         {
-            _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(5));
+            _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(15));
             
             _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(_webDriver.FindElements(By.TagName("i"))[2]));
             
