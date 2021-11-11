@@ -51,6 +51,8 @@ namespace CapitalTest
         {
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(25));
 
+            _webDriverWait.Until(ExpectedConditions.ElementExists(By.XPath("//span[@class='side-nav__item-text']")));
+            
             var mostTradedMarketsButton = _webDriver.FindElements(By.TagName("i"))[2];
             mostTradedMarketsButton.Click();
             mostTradedMarketsButton.Click();
