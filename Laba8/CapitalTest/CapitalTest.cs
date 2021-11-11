@@ -59,7 +59,7 @@ namespace CapitalTest
 
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
-            var addToFavoriteButton = _webDriver.FindElements(By.TagName("add-instrument-to-watchlist-button"))[0];
+            var addToFavoriteButton = _webDriver.FindElements(By.XPath("//div[@class='col favorites']//add-instrument-to-watchlist-button//i"))[0];
             addToFavoriteButton.Click();
 
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
