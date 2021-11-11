@@ -41,19 +41,22 @@ namespace CapitalTest
 
             var continueButton = _webDriver.FindElement(By.CssSelector(".s2_btn"));
             continueButton.Click();
+
+            _webDriverWait.Until(
+                ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//div[@class='checkbox-theme__btn']")));
         }
 
         [Test]
         public void AddMarketToFavoriteTest()
         {
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(15));
-            
-            _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(_webDriver.FindElements(By.TagName("i"))[2]));
-            
+
             var mostTradedMarketsButton = _webDriver.FindElements(By.TagName("i"))[2];
             mostTradedMarketsButton.Click();
             mostTradedMarketsButton.Click();
 
+            _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("add-instrument-to-watchlist-button")));
+            
             var addToFavoriteButton = _webDriver.FindElements(By.CssSelector("add-instrument-to-watchlist-button"))[0];
             addToFavoriteButton.Click();
 
@@ -72,6 +75,7 @@ namespace CapitalTest
 
             Assert.AreEqual(ExpectedFavoritedMarketName, actualFavoritedMarketName);
         }
+        
         [TearDown]
         public void TearDown()
         {
