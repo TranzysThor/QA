@@ -1,6 +1,7 @@
 using System;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools.V85.LayerTree;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -59,15 +60,15 @@ namespace CapitalTest
 
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
-            var addToFavoriteButton = _webDriver.FindElements(By.CssSelector(".trade-instrument add-instrument-to-watchlist-button"))[0];
+            var addToFavoriteButton = _webDriver.FindElements(By.XPath("//div[@class='col favorites']"))[0];
             addToFavoriteButton.Click();
-
-            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             
             var addToFavoritesConfirmationButton =
                 _webDriver.FindElement(By.XPath("//div[@class='popover-add-watchlist__footer']//button[@class='button-main button-main--medium']"));
             addToFavoritesConfirmationButton.Click();
             
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
             var favoriteMarketsButton = _webDriver.FindElements(By.TagName("i"))[1];
             favoriteMarketsButton.Click();
             favoriteMarketsButton.Click();
