@@ -66,11 +66,13 @@ namespace CapitalTest
             addToFavoriteButton.Click();
             
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            
+
             var addToFavoritesConfirmationButton =
                 _webDriver.FindElement(By.XPath("//div[@class='popover-add-watchlist__footer']//button[@class='button-main button-main--medium']"));
             addToFavoritesConfirmationButton.Click();
             
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
             var favoriteMarketsButton = _webDriver.FindElements(By.TagName("i"))[1];
             favoriteMarketsButton.Click();
             favoriteMarketsButton.Click();
