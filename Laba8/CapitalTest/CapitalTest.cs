@@ -23,7 +23,7 @@ namespace CapitalTest
             _webDriver = new FirefoxDriver();
             var windowSize = _webDriver.Manage().Window.Size;
             windowSize.Height = 1080;
-            windowSize.Width = 1920
+            windowSize.Width = 1920;
             _webDriver.Navigate().GoToUrl("https://capital.com/");
             
             Console.WriteLine(_webDriver.Manage().Window.Size);
