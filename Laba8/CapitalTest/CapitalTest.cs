@@ -12,7 +12,7 @@ namespace CapitalTest
         private IWebDriver _webDriver;
         private WebDriverWait _webDriverWait;
         
-        private const string TestEmail = "ttEpamTestLabs4@gmail.com";
+        private const string TestEmail = "ttEpamTestLabs5@gmail.com";
         private const string Password = "P@$$w0rd";
 
         private const string ExpectedFavoritedMarketName = "Bitcoin / USD";
@@ -49,8 +49,6 @@ namespace CapitalTest
         [Test]
         public void AddMarketToFavoriteTest()
         {
-            _webDriver.Manage().Window.Maximize();
-
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(5));
 
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
@@ -76,7 +74,6 @@ namespace CapitalTest
 
             Assert.AreEqual(ExpectedFavoritedMarketName, actualFavoritedMarketName);
         }
-        
         [TearDown]
         public void TearDown()
         {
