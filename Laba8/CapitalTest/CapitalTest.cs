@@ -21,11 +21,13 @@ namespace CapitalTest
         public void Setup()
         {
             _webDriver = new FirefoxDriver();
-            _webDriver.Manage().Window.Maximize();
+            var windowSize = _webDriver.Manage().Window.Size;
+            windowSize.Height = 1080;
+            windowSize.Width = 1920;
             _webDriver.Navigate().GoToUrl("https://capital.com/");
             
-            Console.WriteLine(_webDriver.Manage().Window.Size);
-            
+            Console.WriteLine(windowSize);
+
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(35));
             
             var tryDemoButton = _webDriver.FindElement(By.CssSelector(".outlined-light"));
