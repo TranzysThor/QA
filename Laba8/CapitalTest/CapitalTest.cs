@@ -23,7 +23,9 @@ namespace CapitalTest
             _webDriver = new FirefoxDriver();
             _webDriver.Manage().Window.Maximize();
             _webDriver.Navigate().GoToUrl("https://capital.com/");
-
+            
+            Console.WriteLine(_webDriver.Manage().Window.Size);
+            
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(35));
             
             var tryDemoButton = _webDriver.FindElement(By.CssSelector(".outlined-light"));
@@ -49,15 +51,13 @@ namespace CapitalTest
         [Test]
         public void AddMarketToFavoriteTest()
         {
-            _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(5));
-
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             
             var mostTradedMarketsButton = _webDriver.FindElements(By.TagName("i"))[2];
             mostTradedMarketsButton.Click();
             mostTradedMarketsButton.Click();
 
-            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(70);
 
             var addToFavoriteButton = _webDriver.FindElements(By.XPath("//div[@class='col favorites']//add-instrument-to-watchlist-button"))[0];
             addToFavoriteButton.Click();
