@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
@@ -21,10 +22,10 @@ namespace CapitalTest
         public void Setup()
         {
             _webDriver = new FirefoxDriver();
-            var windowSize = _webDriver.Manage().Window.Size;
-            windowSize.Height = 1080;
-            windowSize.Width = 1920;
+            _webDriver.Manage().Window.Maximize();
             _webDriver.Navigate().GoToUrl("https://capital.com/");
+
+            _webDriver.Manage().Window.Size = new Size(1920, 1080);
             
             Console.WriteLine(_webDriver.Manage().Window.Size);
 
@@ -59,10 +60,12 @@ namespace CapitalTest
             mostTradedMarketsButton.Click();
             mostTradedMarketsButton.Click();
 
-            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(70);
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             var addToFavoriteButton = _webDriver.FindElements(By.XPath("//div[@class='col favorites']//add-instrument-to-watchlist-button"))[0];
             addToFavoriteButton.Click();
+            
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             
             var addToFavoritesConfirmationButton =
                 _webDriver.FindElement(By.XPath("//div[@class='popover-add-watchlist__footer']//button[@class='button-main button-main--medium']"));
