@@ -77,9 +77,13 @@ namespace CapitalTest
 
             Assert.AreEqual(ExpectedFavoritedMarketName, actualFavoritedMarketName);
         }
+        
         [TearDown]
         public void TearDown()
         {
+            var deleteFromFavoriteButton = _webDriver.FindElements(By.XPath("//div[@class='col favorites']//add-instrument-to-watchlist-button"))[0];
+            deleteFromFavoriteButton.Click();
+            
             _webDriver.Quit();
         }
     }
