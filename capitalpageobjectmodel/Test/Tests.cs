@@ -41,15 +41,26 @@ namespace CapitalPageObjectModel.Test
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             _capitalTradingPage.SwitchToFavoriteMarketsTab();
             String actualMarketName = _capitalTradingPage.GetActualFavoriteMarketName();
-            
             Assert.AreEqual(expectedMarketName, actualMarketName);
+            _capitalTradingPage.DeleteMarketFromFavorites();
+        }
+
+        [Test]
+        public void AddGraphToGraphsTest()
+        {
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
+            _capitalTradingPage.SwitchToMostTradedMarketsTab();
+            String expectedGraphMarketName = _capitalTradingPage.GetExpectedGraphMarketName();
+            _capitalTradingPage.AddMarketGraphToGraphs();
+            _capitalTradingPage.SwitchToFavoriteGraphsTab();
+            String actualGraphMarketName = _capitalTradingPage.GetActualGraphMarketName();
+            Assert.AreEqual(expectedGraphMarketName, actualGraphMarketName);
+            _capitalTradingPage.DeleteGraphFromGraphs();
         }
 
         [TearDown]
         public void TearDown()
         {
-            _capitalTradingPage.DeleteMarketFromFavorites();
-            
             _driver.Quit();
         }
     }
